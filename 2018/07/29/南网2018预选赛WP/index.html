@@ -10,17 +10,17 @@
 <meta name="keywords" content="CTF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="南网2018预选赛部分writeup">
-<meta property="og:url" content="http://yoursite.com/2018/07/29/南网2018预选赛WP/index.html">
+<meta property="og:url" content="http://naxg.online/2018/07/29/南网2018预选赛WP/index.html">
 <meta property="og:site_name" content="NAXG">
 <meta property="og:description" content="绕过看门狗一开始拿到链接尝试用and 1=1 来检测注入点，发现有过滤。尝试利用注释+大小写来进行绕过注入拦截。 12345678910检测字段/**/Union/**/Select/**/1,2,3,4,5#获取数据库敏感信息，当前数据库为news/**/Union/**/Select/**/1,database(),user(),version(),5#获取到一张tb_flag表。/**/Un">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/images/Snipaste_2018-07-29_13-41-26.png">
-<meta property="og:image" content="http://yoursite.com/images/Snipaste_2018-07-29_13-43-55.png">
+<meta property="og:image" content="http://naxg.online/images/Snipaste_2018-07-29_13-41-26.png">
+<meta property="og:image" content="http://naxg.online/images/Snipaste_2018-07-29_13-43-55.png">
 <meta property="og:updated_time" content="2018-08-04T19:20:47.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="南网2018预选赛部分writeup">
 <meta name="twitter:description" content="绕过看门狗一开始拿到链接尝试用and 1=1 来检测注入点，发现有过滤。尝试利用注释+大小写来进行绕过注入拦截。 12345678910检测字段/**/Union/**/Select/**/1,2,3,4,5#获取数据库敏感信息，当前数据库为news/**/Union/**/Select/**/1,database(),user(),version(),5#获取到一张tb_flag表。/**/Un">
-<meta name="twitter:image" content="http://yoursite.com/images/Snipaste_2018-07-29_13-41-26.png">
+<meta name="twitter:image" content="http://naxg.online/images/Snipaste_2018-07-29_13-41-26.png">
     
     
         
@@ -92,16 +92,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/07/29/南网2018预选赛WP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: http://yoursite.com/2018/07/29/南网2018预选赛WP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://naxg.online/2018/07/29/南网2018预选赛WP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: http://naxg.online/2018/07/29/南网2018预选赛WP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -196,16 +196,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/07/29/南网2018预选赛WP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: http://yoursite.com/2018/07/29/南网2018预选赛WP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/07/29/南网2018预选赛WP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://naxg.online/2018/07/29/南网2018预选赛WP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: http://naxg.online/2018/07/29/南网2018预选赛WP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://naxg.online/2018/07/29/南网2018预选赛WP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
