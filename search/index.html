@@ -8,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。《再别康桥》——徐志摩">
 <meta property="og:type" content="website">
-<meta property="og:title" content="NAXG">
-<meta property="og:url" content="https://naxg.online/archives/2019/07/index.html">
+<meta property="og:title" content="Search">
+<meta property="og:url" content="https://naxg.online/search/index.html">
 <meta property="og:site_name" content="NAXG">
 <meta property="og:description" content="轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。《再别康桥》——徐志摩">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-09-10T07:36:33.798Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NAXG">
+<meta name="twitter:title" content="Search">
 <meta name="twitter:description" content="轻轻的我走了，正如我轻轻的来；我轻轻的招手，作别西天的云彩。《再别康桥》——徐志摩">
     
     
@@ -35,7 +36,7 @@
         
     
     <!-- title -->
-    <title>Writing: 2019/7</title>
+    <title>Search</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -85,90 +86,22 @@
 </header>
 
         
-        <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-    
-      
-      
-      
-      
-        <h2>2019</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2019-07-10T07:48:01.000Z" itemprop="datePublished">2019-07-10</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2019/07/10/Redis-Rce/">Redis_Rce</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2019-07-10T03:18:14.000Z" itemprop="datePublished">2019-07-10</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2019/07/10/信息收集小技巧/">信息收集小技巧</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2019-07-09T13:48:36.000Z" itemprop="datePublished">2019-07-09</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2019/07/09/恢复更新/">恢复更新啦</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   
 
-</div>
+  <div class="content" itemprop="articleBody">
+      
+        <section id="search">
+  <form>
+    <input type="text" class="search-input" id="search-input" placeholder="Search...">
+  </form>
+  <div id="search-result"></div>
+  <p class="search-no-result">No results found.</p>
+</section>
+
+      
+  </div>
+</article>
 
         
         <footer id="footer">
@@ -204,6 +137,41 @@
 <script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
 <script src="/js/main.js"></script>
 <!-- search -->
+
+  <script src="/js/search.js"></script>
+  <script type="text/javascript">
+  $(function() {
+
+    var $inputArea = $("input#search-input");
+    var $resultArea = document.querySelector("div#search-result");
+
+    $inputArea.focus(function() {
+      var search_path = "search.xml";
+      if (search_path.length == 0) {
+        search_path = "search.xml";
+      }
+      var path = "/" + search_path;
+      searchFunc(path, 'search-input', 'search-result');
+    });
+
+    $inputArea.keydown(function(e) {
+      if (e.which == 13) {
+        e.preventDefault();
+      }
+    });
+
+    var observer = new MutationObserver(function(mutationsList, observer) {
+      if (mutationsList[0].addedNodes) {
+        $(".search-no-result").show(200);
+      } else {
+        $(".search-no-result").hide();
+      }
+    });
+
+    observer.observe($resultArea, { childList: true });
+
+  });
+  </script>
 
 <!-- Google Analytics -->
 
