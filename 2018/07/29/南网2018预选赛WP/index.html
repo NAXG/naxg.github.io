@@ -10,18 +10,18 @@
     <meta name="description" content="绕过看门狗一开始拿到链接尝试用and 1&#x3D;1 来检测注入点，发现有过滤。尝试利用注释+大小写来进行绕过注入拦截。 12345678910检测字段&#x2F;**&#x2F;Union&#x2F;**&#x2F;Select&#x2F;**&#x2F;1,2,3,4,5#获取数据库敏感信息，当前数据库为news&#x2F;**&#x2F;Union&#x2F;**&#x2F;Select&#x2F;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="南网2018预选赛部分writeup">
-<meta property="og:url" content="https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/index.html">
+<meta property="og:url" content="https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/index.html">
 <meta property="og:site_name" content="NAXG">
 <meta property="og:description" content="绕过看门狗一开始拿到链接尝试用and 1&#x3D;1 来检测注入点，发现有过滤。尝试利用注释+大小写来进行绕过注入拦截。 12345678910检测字段&#x2F;**&#x2F;Union&#x2F;**&#x2F;Select&#x2F;**&#x2F;1,2,3,4,5#获取数据库敏感信息，当前数据库为news&#x2F;**&#x2F;Union&#x2F;**&#x2F;Select&#x2F;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://naxg.online/images/Snipaste_2018-07-29_13-41-26.png">
-<meta property="og:image" content="https://naxg.online/images/Snipaste_2018-07-29_13-43-55.png">
+<meta property="og:image" content="https://naxg.github.io/images/Snipaste_2018-07-29_13-41-26.png">
+<meta property="og:image" content="https://naxg.github.io/images/Snipaste_2018-07-29_13-43-55.png">
 <meta property="article:published_time" content="2018-07-29T04:46:00.000Z">
 <meta property="article:modified_time" content="2018-08-04T19:20:47.403Z">
 <meta property="article:author" content="NAXG">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://naxg.online/images/Snipaste_2018-07-29_13-41-26.png">
+<meta name="twitter:image" content="https://naxg.github.io/images/Snipaste_2018-07-29_13-41-26.png">
     
     
         
@@ -101,16 +101,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -207,16 +207,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://naxg.online/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&text=南网2018预选赛部分writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&is_video=false&description=南网2018预选赛部分writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=南网2018预选赛部分writeup&body=Check out this article: https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&title=南网2018预选赛部分writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://naxg.github.io/2018/07/29/%E5%8D%97%E7%BD%912018%E9%A2%84%E9%80%89%E8%B5%9BWP/&name=南网2018预选赛部分writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
